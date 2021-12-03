@@ -3,7 +3,6 @@ import numpy as np
 import copy
 fileObj = open('input', "r")
 lines = np.array(fileObj.read().splitlines())
-# lines_co2 = copy.deepcopy(lines_oxygen)
 
 
 def get_rating(input, most_common=True):
