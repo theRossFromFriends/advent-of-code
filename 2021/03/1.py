@@ -1,4 +1,3 @@
-import csv
 fileObj = open('input', "r")
 lines = fileObj.read().splitlines()
 line_length = len(lines[0])

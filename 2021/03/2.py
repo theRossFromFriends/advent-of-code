@@ -1,6 +1,6 @@
-import csv
 import numpy as np
 import copy
+
 fileObj = open('input', "r")
 lines = np.array(fileObj.read().splitlines())
 
