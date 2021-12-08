@@ -1,5 +1,4 @@
 import numpy as np
-import sys
 
 fileObj = open('input', "r")
 input_data = np.array(fileObj.read().splitlines())
