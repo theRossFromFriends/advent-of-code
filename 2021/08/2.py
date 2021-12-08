@@ -7,8 +7,6 @@ data = [(y[0].split(), y[1].split()) for y in [x.split('|') for x in input_data]
 def check_for_substring(substring, string):
     return (0 not in [s in string for s in substring])
 
-def
-
 count = 0
 for (displays, outputs) in data:
     symbols_dict = {}
@@ -17,7 +15,6 @@ for (displays, outputs) in data:
         if len(display) == 2:
             symbols_dict[display] = 1
             displays_to_delete.append(idx)
-
         elif len(display) == 3:
             symbols_dict[display] = 7
             displays_to_delete.append(idx)
@@ -27,7 +24,6 @@ for (displays, outputs) in data:
         elif len(display) == 7:
             symbols_dict[display] = 8
             displays_to_delete.append(idx)
-
     displays = [display for (idx, display) in enumerate(displays) if idx not in displays_to_delete]
         
     for key, value in symbols_dict.items():
@@ -46,14 +42,12 @@ for (displays, outputs) in data:
             if check_for_substring(representation_4, display):
                 symbols_dict[display] = 9
                 displays_to_delete.append(idx)
-                print(symbols_dict[display])
             elif (check_for_substring(display, representation_8) and (not check_for_substring(representation_7, display))):
                 symbols_dict[display] = 6
                 displays_to_delete.append(idx)
             else:
                 symbols_dict[display] = 0
                 displays_to_delete.append(idx)
-
     displays = [display for (idx, display) in enumerate(displays) if idx not in displays_to_delete]
 
     for key, value in symbols_dict.items():
