@@ -25,47 +25,32 @@ for (displays, outputs) in data:
             symbols_dict[display] = 8
             displays_to_delete.append(idx)
     displays = [display for (idx, display) in enumerate(displays) if idx not in displays_to_delete]
-        
-    for key, value in symbols_dict.items():
-        if value == 1:
-            representation_1 = key
-        elif value == 7:
-            representation_7 = key
-        elif value == 4:
-            representation_4 = key
-        elif value == 8:
-            representation_8 = key
+    representations = {value: key for (key, value) in symbols_dict.items()}
 
     displays_to_delete = []
     for idx, display in enumerate(displays):
         if len(display) == 6:
-            if check_for_substring(representation_4, display):
+            if check_for_substring(representations[4], display):
                 symbols_dict[display] = 9
                 displays_to_delete.append(idx)
-            elif (check_for_substring(display, representation_8) and (not check_for_substring(representation_7, display))):
+            elif (check_for_substring(display, representations[8]) and (not check_for_substring(representations[7], display))):
                 symbols_dict[display] = 6
                 displays_to_delete.append(idx)
             else:
                 symbols_dict[display] = 0
                 displays_to_delete.append(idx)
     displays = [display for (idx, display) in enumerate(displays) if idx not in displays_to_delete]
-
-    for key, value in symbols_dict.items():
-        if value == 9:
-            representation_9 = key
-        elif value == 0:
-            representation_0 = key
-        elif value == 6:
-            representation_6 = key
+    representations = {value: key for (key, value) in symbols_dict.items()}
 
     for idx, display in enumerate(displays):
         if len(display) == 5:
-            if check_for_substring(display, representation_6):
+            if check_for_substring(display, representations[6]):
                 symbols_dict[display] = 5
-            elif check_for_substring(display, representation_9):
+            elif check_for_substring(display, representations[9]):
                 symbols_dict[display] = 3           
             else:
                 symbols_dict[display] = 2
+    representations = {value: key for (key, value) in symbols_dict.items()}
 
     number = ''
     for output in outputs:
