@@ -20,8 +20,7 @@ def point_is_lowest(array, idx_to_check, point_to_check):
     if(point_y == y_dim-1):
         positions_to_check.remove((point_x, point_y+1))
 
-    for d in positions_to_check:
-        (pos_x, pos_y) = d
+    for (pos_x, pos_y) in positions_to_check:
         adj_point = array[pos_x, pos_y]
         if(adj_point <= point_to_check):
             return False
