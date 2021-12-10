@@ -23,6 +23,6 @@ for line in completion_character_lines:
         score *= 5
         score += scores_dict[char]
     scores.append(score)
-
 scores.sort()
+
 print(scores[(len(scores)-1)//2])

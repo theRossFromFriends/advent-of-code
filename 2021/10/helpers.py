@@ -36,7 +36,6 @@ def get_completion_character_lines(input):
                 stack.append(char)
             else:
                 stack.pop()
-                # if (len(stack))
         stack.reverse()
 
         completion_characters = [right_characters[idx] for idx in [
