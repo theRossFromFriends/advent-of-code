@@ -24,6 +24,7 @@ def point_is_lowest(array, idx_to_check, point_to_check):
         adj_point = array[pos_x, pos_y]
         if(adj_point <= point_to_check):
             return False
+
     return True
 
 

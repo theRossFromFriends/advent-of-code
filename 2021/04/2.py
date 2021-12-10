@@ -4,6 +4,7 @@ fileObj = open('input', "r")
 lines = fileObj.read().splitlines()
 bingo_numbers = np.array(lines[0].split(','))
 boards_data = '\n'.join(lines[2:]).split('\n\n')
+
 boards = []
 for line in boards_data:
     line.replace('\n', '')

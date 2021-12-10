@@ -38,4 +38,5 @@ top_3 = basin_sizes[:3]
 result = 1
 for size in top_3:
     result *= size
+
 print(result)
