@@ -6,9 +6,12 @@ input = fileObj.read().splitlines()
 octopus_matrix = np.array([list(line) for line in input]).astype(int)
 
 
-flashes_total = 0
-for i in range(100):
+synchronized = False
+step = 0
+while not synchronized:
+    step += 1
     octopus_matrix = helpers.take_a_step(octopus_matrix)
-    flashes_total += len(octopus_matrix[octopus_matrix == 0])
+    synchronized = True if np.count_nonzero(
+        octopus_matrix != 0) == 0 else False
 
-print(flashes_total)
+print(step)
