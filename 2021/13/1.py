@@ -8,6 +8,7 @@ dots = np.array([x.split(',')
 folds = input_data[1].splitlines()
 
 paper = helpers.get_marked_initial_paper(dots)
+
 first_fold = folds[0]
 paper = helpers.fold_paper(first_fold, paper)
 
