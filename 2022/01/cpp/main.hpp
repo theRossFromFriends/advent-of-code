@@ -4,28 +4,28 @@
 #include<string>
 
 bool readFileContent(std::string fileName, std::vector<std::string> & lines);
-int solvePart1();
-int solvePart2();
+int solvePart1(std::vector<std::string> & lines);
+int solvePart2(std::vector<std::string> & lines);
 void getAllLoads(std::vector<std::string> & lines, std::vector<int> & loads);
 
-void getAllLoads(std::vector<std::string> & lines, std::vector<int> & loads)
+bool readFileContent(std::string fileName, std::vector<std::string> & lines)
 {
-    loads.clear();
-    int elfLoad = 0;
-    std::vector<std::string>::iterator it;
-    for(it = lines.begin(); it != lines.end(); ++it)
-        {
-            if(*it == "")
-            {
-                loads.push_back(elfLoad);
-                elfLoad = 0;
-            }
-            else{
-                elfLoad += stoi(*it);
-            }
-        }
-    
-    sort(loads.begin(), loads.end());
+    lines.clear();
+    std::ifstream input_file(fileName);
+    std::string s;
+
+    if(!input_file)
+    {
+        return false;
+    }
+
+    while (getline(input_file, s))
+    {
+        lines.push_back(s);
+    }
+    input_file.close();
+
+    return true;
 }
 
 int solvePart1(std::vector<std::string> & lines)
@@ -49,22 +49,22 @@ int solvePart2(std::vector<std::string> & lines)
     return maxTotalCaloriesTop3;
 }
 
-bool readFileContent(std::string fileName, std::vector<std::string> & lines)
+void getAllLoads(std::vector<std::string> & lines, std::vector<int> & loads)
 {
-    lines.clear();
-    std::ifstream input_file(fileName);
-    std::string s;
-
-    if(!input_file)
-    {
-        return false;
-    }
-
-    while (getline(input_file, s))
-    {
-        lines.push_back(s);
-    }
-    input_file.close();
-
-    return true;
+    loads.clear();
+    int elfLoad = 0;
+    std::vector<std::string>::iterator it;
+    for(it = lines.begin(); it != lines.end(); ++it)
+        {
+            if(*it == "")
+            {
+                loads.push_back(elfLoad);
+                elfLoad = 0;
+            }
+            else{
+                elfLoad += stoi(*it);
+            }
+        }
+    
+    sort(loads.begin(), loads.end());
 }
