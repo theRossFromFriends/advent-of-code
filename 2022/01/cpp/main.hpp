@@ -43,9 +43,12 @@ int solvePart2(std::vector<std::string> & lines)
     getAllLoads(lines, loads);
 
     int maxTotalCaloriesTop3=0;
-    for(std::vector<int>::iterator it = loads.end()-3; it != loads.end(); ++it)
+    std::vector<int>::iterator it;
+    for(it = loads.end()-3; it != loads.end(); ++it)
+    {
         maxTotalCaloriesTop3 += *it;
-
+    }
+    
     return maxTotalCaloriesTop3;
 }
 
@@ -55,16 +58,17 @@ void getAllLoads(std::vector<std::string> & lines, std::vector<int> & loads)
     int elfLoad = 0;
     std::vector<std::string>::iterator it;
     for(it = lines.begin(); it != lines.end(); ++it)
+    {
+        if(*it == "")
         {
-            if(*it == "")
-            {
-                loads.push_back(elfLoad);
-                elfLoad = 0;
-            }
-            else{
-                elfLoad += stoi(*it);
-            }
+            loads.push_back(elfLoad);
+            elfLoad = 0;
         }
+        else
+        {
+            elfLoad += stoi(*it);
+        }
+    }
     
     sort(loads.begin(), loads.end());
 }
