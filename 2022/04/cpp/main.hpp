@@ -40,8 +40,7 @@ int solvePart1(std::vector<std::string> &lines)
 
         std::string assignment1 = s.substr(0, s.find(','));
         std::string assignment2 = s.substr(s.find(',') + 1, s.length());
-        std::set<int> set1;
-        std::set<int> set2;
+        std::set<int> set1, set2;
         createSet(assignment1, set1);
         createSet(assignment2, set2);
 
@@ -65,8 +64,7 @@ int solvePart2(std::vector<std::string> &lines)
         std::string s = *it;
         std::string assignment1 = s.substr(0, s.find(','));
         std::string assignment2 = s.substr(s.find(',') + 1, s.length());
-        std::set<int> set1;
-        std::set<int> set2;
+        std::set<int> set1, set2;
         createSet(assignment1, set1);
         createSet(assignment2, set2);
 
