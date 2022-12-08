@@ -11,11 +11,8 @@ int main()
         return -1;
     }
 
-    auto result1 = solvePart1(lines);
-    auto result2 = solvePart2(lines);
-
-    std::cout << "Solution part1: " << result1 << '\n';
-    std::cout << "Solution part2: " << result2 << '\n';
+    solvePart1(lines);
+    solvePart2(lines);
 
     return 0;
 }

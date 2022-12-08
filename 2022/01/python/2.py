@@ -4,7 +4,7 @@ elves = fileObj.read().split('\n\n')
 max_total = 0
 total_loads = []
 for elf in elves:
-    elf_loads = list(map(int,elf.split('\n')))
+    elf_loads = list(map(int, elf.split('\n')))
     total = sum(elf_loads)
     total_loads.append(total)
 

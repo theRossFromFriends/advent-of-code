@@ -5,17 +5,17 @@
 #include <sstream>
 #include <map>
 
-bool readFileContent(std::string fileName, std::vector<std::string> & lines);
-int solvePart1(std::vector<std::string> & lines);
-int solvePart2(std::vector<std::string> & lines);
+bool readFileContent(std::string fileName, std::vector<std::string> &lines);
+int solvePart1(std::vector<std::string> &lines);
+int solvePart2(std::vector<std::string> &lines);
 
-bool readFileContent(std::string fileName, std::vector<std::string> & lines)
+bool readFileContent(std::string fileName, std::vector<std::string> &lines)
 {
     lines.clear();
     std::ifstream input_file(fileName);
     std::string s;
 
-    if(!input_file)
+    if (!input_file)
     {
         return false;
     }
@@ -29,11 +29,11 @@ bool readFileContent(std::string fileName, std::vector<std::string> & lines)
     return true;
 }
 
-int solvePart1(std::vector<std::string> & lines)
+int solvePart1(std::vector<std::string> &lines)
 {
     int totalScore = 0;
     std::vector<std::string>::iterator it;
-    for(it = lines.begin(); it != lines.end(); ++it)
+    for (it = lines.begin(); it != lines.end(); ++it)
     {
         std::string s = *it;
         char opponentChoice = s[0];
@@ -44,7 +44,7 @@ int solvePart1(std::vector<std::string> & lines)
         itemPoints['Y'] = 2;
         itemPoints['Z'] = 3;
 
-        std::map<std::pair<char,char>, int> roundPoints;
+        std::map<std::pair<char, char>, int> roundPoints;
         roundPoints[std::make_pair('A', 'X')] = 3;
         roundPoints[std::make_pair('A', 'Y')] = 6;
         roundPoints[std::make_pair('A', 'Z')] = 0;
@@ -56,17 +56,17 @@ int solvePart1(std::vector<std::string> & lines)
         roundPoints[std::make_pair('C', 'Z')] = 3;
 
         totalScore += itemPoints[myChoice];
-        totalScore += roundPoints[std::make_pair(opponentChoice,myChoice)];
+        totalScore += roundPoints[std::make_pair(opponentChoice, myChoice)];
     }
 
     return totalScore;
 }
 
-int solvePart2(std::vector<std::string> & lines)
+int solvePart2(std::vector<std::string> &lines)
 {
     int totalScore = 0;
     std::vector<std::string>::iterator it;
-    for(it = lines.begin(); it != lines.end(); ++it)
+    for (it = lines.begin(); it != lines.end(); ++it)
     {
         std::string s = *it;
         char opponentChoice = s[0];
@@ -77,7 +77,7 @@ int solvePart2(std::vector<std::string> & lines)
         itemPoints['B'] = 2;
         itemPoints['C'] = 3;
 
-        std::map<std::pair<char,char>, char> choiceStrategy;
+        std::map<std::pair<char, char>, char> choiceStrategy;
         choiceStrategy[std::make_pair('A', 'X')] = 'C';
         choiceStrategy[std::make_pair('A', 'Y')] = 'A';
         choiceStrategy[std::make_pair('A', 'Z')] = 'B';
@@ -88,7 +88,7 @@ int solvePart2(std::vector<std::string> & lines)
         choiceStrategy[std::make_pair('C', 'Y')] = 'C';
         choiceStrategy[std::make_pair('C', 'Z')] = 'A';
 
-        std::map<std::pair<char,char>, int> roundPoints;
+        std::map<std::pair<char, char>, int> roundPoints;
         roundPoints[std::make_pair('A', 'A')] = 3;
         roundPoints[std::make_pair('A', 'B')] = 6;
         roundPoints[std::make_pair('A', 'C')] = 0;
@@ -99,10 +99,10 @@ int solvePart2(std::vector<std::string> & lines)
         roundPoints[std::make_pair('C', 'B')] = 0;
         roundPoints[std::make_pair('C', 'C')] = 3;
 
-        char myChoice = choiceStrategy[std::make_pair(opponentChoice,myStrategy)];
+        char myChoice = choiceStrategy[std::make_pair(opponentChoice, myStrategy)];
 
         totalScore += itemPoints[myChoice];
-        totalScore += roundPoints[std::make_pair(opponentChoice,myChoice)];
+        totalScore += roundPoints[std::make_pair(opponentChoice, myChoice)];
     }
 
     return totalScore;
